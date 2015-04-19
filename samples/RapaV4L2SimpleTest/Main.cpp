@@ -104,7 +104,7 @@ public:
 
 	bool saveImages( int testNum, int devNum )
 	{
-		printf("Saving %d images to format:%s\n", mImages.size(), mImageFormat.toString().c_str() ) ;
+        printf("Saving %d images to format:%s\n", static_cast<int>(mImages.size()), mImageFormat.toString().c_str() ) ;
 		RV4L2::ImageConverter	converter( RV4L2::ImageFormat(mImageFormat.getWidth(), mImageFormat.getHeight(), RV4L2::ImageFormat::RGB24) );
 		for ( std::size_t i=0; i<mImages.size(); ++i )
 		{
@@ -150,9 +150,9 @@ int main( int argc, char** argv )
 	printf("Supported capture settings for devices '%s':\n", device->getDeviceName().c_str());
 	const RV4L2::CaptureSettingsList& captureSettingsList = device->getSupportedCaptureSettingsList();
 	for ( std::size_t i=0; i<captureSettingsList.size(); ++i )
-		printf("\t%d - %s\n", i, captureSettingsList[i].toString().c_str() );
+        printf("\t%d - %s\n", static_cast<int>(i), captureSettingsList[i].toString().c_str() );
 	
-    printf("Starting capture #%d...\n", captureSettingsIndex);
+    printf("Starting capture #%d...\n", static_cast<int>(captureSettingsIndex));
 	device->startCapture( captureSettingsIndex );
 	const RV4L2::CaptureSettings& captureSettings = captureSettingsList[captureSettingsIndex];
 	

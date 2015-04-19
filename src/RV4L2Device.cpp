@@ -331,7 +331,7 @@ void Device::initializeInternalCaptureSettingsList()
 	while ( retFmtDesc==0 );
 
 	// For debug
-    printf("DEBUG: Internal capture settings list: %d\n", mInternalCaptureSettingsList.size() );
+    printf("DEBUG: Internal capture settings list: %d\n", static_cast<int>(mInternalCaptureSettingsList.size()) );
 	for ( std::size_t i=0; i<mInternalCaptureSettingsList.size(); ++i )
 	{
 		const InternalCaptureSettings& internalCaptureSettings = mInternalCaptureSettingsList[i];
